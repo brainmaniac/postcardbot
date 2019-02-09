@@ -41,7 +41,6 @@
                 <div>
                     <ul>
                     @foreach ($entries as $entry)
-                            <li>id: {{ $entry->id }} lat: {{ $entry->lat }} lng: {{ $entry->lng }}</li>
                             <div class="parent">
                                 <img class="image1" src="https://maps.googleapis.com/maps/api/streetview?size=800x600&location={{ $entry->lat }},{{ $entry->lng }}&key=AIzaSyBfxkwsWMYydfa2FBkVO1i-Knux6e6HMLo&fov=120&heading=90" />
                                 <img class="image2" src="/img/person{{ $entry->img }}.png" />
