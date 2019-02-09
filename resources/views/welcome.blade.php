@@ -31,9 +31,13 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Postcardbot
+                <div class="splash-container">
+                    <div class="splash-text">
+                        <h1>My dream trip</h1>
+                        <h4>Brought to you by PostcardBot</h4>
+                    </div>
                 </div>
+
                 <div>
                     <ul>
                     @foreach ($entries as $entry)
@@ -48,11 +52,5 @@
 
             </div>
         </div>
-    <script>
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * Math.floor(max));
-        }
-    </script>
-    
     </body>
 </html>
