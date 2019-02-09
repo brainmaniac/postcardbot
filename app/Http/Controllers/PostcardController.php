@@ -29,6 +29,21 @@ class PostcardController extends Controller
     }
 
     /**
+     * Counts files in directory
+     * 
+     * @param path of dir to count files in
+     * @return count as int
+     */
+    public static function filecount($directory){
+        $filecount = 0;
+        $files = glob($directory . "*");
+        if ($files){
+            $filecount = count($files);
+        }
+        return $filecount;
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -40,12 +55,9 @@ class PostcardController extends Controller
     // }
     public function store($coordinate)
     {
-        $directory = "img/";
-        $filecount = 0;
-        $files = glob($directory . "*");
-        if ($files){
-            $filecount = count($files);
-        }
+        //$directory = "img/";
+        
+        $filecount = PostcardController::filecount("img/");
         
         $postcard = New Postcard;
         $postcard->lat = str_before($coordinate, ',');
