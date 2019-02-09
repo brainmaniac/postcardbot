@@ -16,6 +16,8 @@ class RoutesController extends Controller
 
         $entries = Postcard::all();
 
+        $entries= $entries->reverse();
+        
         return view('welcome', compact('entries'));
 
     }
