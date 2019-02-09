@@ -18,6 +18,7 @@ class CreatePostcardsTable extends Migration
             $table->float('lat');
             $table->float('lng');
             $table->integer('img');
+            $table->integer('heading');
             $table->timestamps();
         });
     }

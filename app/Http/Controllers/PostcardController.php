@@ -66,6 +66,7 @@ class PostcardController extends Controller
         $postcard->lat = str_before($coordinate, ',');
         $postcard->lng = str_after($coordinate, ',');
         $postcard->img = rand ( 1 , PostcardController::filecount("img/") );
+        $postcard->heading = rand ( 0 , 360 );
 
         $postcard->save();
 
