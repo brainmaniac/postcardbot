@@ -17,8 +17,20 @@ class RoutesController extends Controller
         $entries = Postcard::all();
 
         $entries= $entries->reverse();
-        
+
         return view('welcome', compact('entries'));
 
     }
+
+    /**
+     * Sends you to the gps page
+     *
+     */
+    
+    public function gps(){
+
+        return view('gps');
+
+    }
 }
+
