@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Postcard;
 use Illuminate\Http\Request;
+use Redirect;
 
 class PostcardController extends Controller
 {
@@ -33,10 +34,20 @@ class PostcardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
+    public function store($lat, $lng)
     {
-        //
+        $postcard = New Postcard;
+        $postcard->lat = $lat;
+        $postcard->lng = $lng;
+        $postcard->save();
+
+        return \Redirect::to('https://i.kym-cdn.com/entries/icons/original/000/000/745/success.jpg');
     }
+
 
     /**
      * Display the specified resource.

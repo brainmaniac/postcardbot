@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'RoutesController@welcome');
+
+Route::get('/addcoordinates/{lat}/{lng}', 'PostcardController@store');

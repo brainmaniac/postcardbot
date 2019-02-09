@@ -83,6 +83,13 @@
                 <div class="title m-b-md">
                     Postcardbot
                 </div>
+                <div>
+                    <ul>
+                    @foreach ($entries as $entry)
+                            <li>id: {{ $entry->id }} lat: {{ $entry->lat }} lng: {{ $entry->lng }}</li>
+                    @endforeach
+                    </ul>
+                </div>
 
             </div>
         </div>
