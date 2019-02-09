@@ -13,4 +13,4 @@
 
 Route::get('/', 'RoutesController@welcome')->name('welcome');
 
-Route::get('/addcoordinates/{lat}/{lng}', 'PostcardController@store');
+Route::get('/addcoordinates/{coordinate}', 'PostcardController@store');
