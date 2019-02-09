@@ -13,4 +13,6 @@
 
 Route::get('/', 'RoutesController@welcome')->name('welcome');
 
+Route::get('/gps', 'RoutesController@gps')->name('gps');
+
 Route::get('/addcoordinates/{coordinate}', 'PostcardController@store');
