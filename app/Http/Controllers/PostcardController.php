@@ -58,10 +58,8 @@ class PostcardController extends Controller
     {   
         
         // $client = new Client();
-        // $res = $client->get('https://maps.googleapis.com/maps/api/streetview/metadata?size=600x300&location=eiffel%20tower,%20paris,%20france&heading=-45&pitch=42&fov=110&key=AIzaSyBfxkwsWMYydfa2FBkVO1i-Knux6e6HMLo');
-        // //$res = $client->get('https://maps.googleapis.com/maps/api/streetview?size=800x600&location=78.648401,14.194336&key=AIzaSyBfxkwsWMYydfa2FBkVO1i-Knux6e6HMLo&fov=120&heading=90');
-        // $res->getStatusCode();
-
+        // $res = $client->get('https://maps.googleapis.com/maps/api/streetview?size=800x600&location=78.648401,14.194336&key=AIzaSyBfxkwsWMYydfa2FBkVO1i-Knux6e6HMLo&fov=120&heading=90');
+        // dd($res->getStatusCode());
         // dd($res->getBody());
 
         $postcard = New Postcard;
