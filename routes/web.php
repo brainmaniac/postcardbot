@@ -1,5 +1,7 @@
 <?php
 
+use GuzzleHttp\Client;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,9 @@ Route::get('/', 'RoutesController@welcome')->name('welcome');
 Route::get('/gps', 'RoutesController@gps')->name('gps');
 
 Route::get('/addcoordinates/{coordinate}', 'PostcardController@store');
+
+// Sample working coordinates
+// http://postcardbot.test/addcoordinates/59.2987601,18.082784
+
+// Sample empty coordinates
+// http://postcardbot.test/addcoordinates/78.648401,14.194336
