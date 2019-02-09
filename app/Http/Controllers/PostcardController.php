@@ -45,7 +45,7 @@ class PostcardController extends Controller
         $postcard->lng = $lng;
         $postcard->save();
 
-        return \Redirect::to('https://i.kym-cdn.com/entries/icons/original/000/000/745/success.jpg');
+        return \Redirect::to('/');
     }
 
 
