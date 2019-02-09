@@ -1,6 +1,8 @@
 @extends('master')
     @section('content')
         <div>
-            hello world
+            <script>
+                startGps();
+            </script>
         </div>
     @endsection
