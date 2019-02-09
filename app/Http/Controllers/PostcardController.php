@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Postcard;
 use Illuminate\Http\Request;
 use Redirect;
+use GuzzleHttp\Client;
 
 class PostcardController extends Controller
 {
@@ -54,15 +55,19 @@ class PostcardController extends Controller
     //     //
     // }
     public function store($coordinate)
-    {
-        //$directory = "img/";
+    {   
         
-        $filecount = PostcardController::filecount("img/");
-        
+        // $client = new Client();
+        // $res = $client->get('https://maps.googleapis.com/maps/api/streetview/metadata?size=600x300&location=eiffel%20tower,%20paris,%20france&heading=-45&pitch=42&fov=110&key=AIzaSyBfxkwsWMYydfa2FBkVO1i-Knux6e6HMLo');
+        // //$res = $client->get('https://maps.googleapis.com/maps/api/streetview?size=800x600&location=78.648401,14.194336&key=AIzaSyBfxkwsWMYydfa2FBkVO1i-Knux6e6HMLo&fov=120&heading=90');
+        // $res->getStatusCode();
+
+        // dd($res->getBody());
+
         $postcard = New Postcard;
         $postcard->lat = str_before($coordinate, ',');
         $postcard->lng = str_after($coordinate, ',');
-        $postcard->img = rand ( 1 , $filecount );
+        $postcard->img = rand ( 1 , PostcardController::filecount("img/") );
 
         $postcard->save();
 
