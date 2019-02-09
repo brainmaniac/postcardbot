@@ -40,10 +40,20 @@ class PostcardController extends Controller
     // }
     public function store($coordinate)
     {
+        $directory = "img/";
+        $filecount = 0;
+        $files = glob($directory . "*");
+        if ($files){
+            $filecount = count($files);
+        }
+        
         $postcard = New Postcard;
         $postcard->lat = str_before($coordinate, ',');
         $postcard->lng = str_after($coordinate, ',');
+        $postcard->img = rand ( 1 , $filecount );
+
         $postcard->save();
+
 
         return \Redirect::to('/');
     }
