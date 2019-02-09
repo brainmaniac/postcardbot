@@ -1,6 +1,6 @@
 @extends('master')
     @section('content')
         <div>
-            hello world
+            <button id="gpsButton">Start GPS</button>
         </div>
     @endsection
