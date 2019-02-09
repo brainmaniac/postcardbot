@@ -93,4 +93,16 @@ class PostcardController extends Controller
     {
         //
     }
+
+    /**
+     * Reap the image
+     *
+     * @param  coordinates lat/lng
+     * @return image
+     */
+    public function reapImg()
+    {
+        
+        $jsonData = json_decode(file_get_contents('https://maps.googleapis.com/maps/api/streetview?size=800x600&location=46.414382,10.013988&key=AIzaSyBfxkwsWMYydfa2FBkVO1i-Knux6e6HMLo&fov=120&heading=90'));
+    }
 }
