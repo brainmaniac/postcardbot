@@ -1,0 +1,2 @@
+# postcardbot
+generate postcard album
