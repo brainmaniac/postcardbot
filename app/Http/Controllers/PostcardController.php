@@ -55,25 +55,19 @@ class PostcardController extends Controller
     //     //
     // }
     public function store($coordinate)
-    {   
-        
-        // $client = new Client();
-        // $res = $client->get('https://maps.googleapis.com/maps/api/streetview?size=800x600&location=78.648401,14.194336&key=AIzaSyBfxkwsWMYydfa2FBkVO1i-Knux6e6HMLo&fov=120&heading=90');
-        // dd($res->getStatusCode());
-        // dd($res->getBody());
+    {
+        if($this->coordinateHasImage($coordinate)) {
+            $postcard = New Postcard;
+            $postcard->lat = str_before($coordinate, ',');
+            $postcard->lng = str_after($coordinate, ',');
+            $postcard->img = rand ( 1 , PostcardController::filecount("img/") );
+            $postcard->heading = rand ( 0 , 360 );
+            $postcard->save();
+            return "Postcard saved";
+        }
 
-        $postcard = New Postcard;
-        $postcard->lat = str_before($coordinate, ',');
-        $postcard->lng = str_after($coordinate, ',');
-        $postcard->img = rand ( 1 , PostcardController::filecount("img/") );
-        $postcard->heading = rand ( 0 , 360 );
-
-        $postcard->save();
-
-
-        return \Redirect::to('/');
+        return "Could not find image at that location";
     }
-
 
     /**
      * Display the specified resource.
@@ -118,5 +112,12 @@ class PostcardController extends Controller
     public function destroy(Postcard $postcard)
     {
         //
+    }
+
+    private function coordinateHasImage($coordinate)
+    {
+        $client = new Client();
+        $res = $client->get(  'https://maps.googleapis.com/maps/api/streetview/metadata?size=600x300&location=' . $coordinate . '&fov=90&heading=235&pitch=10&key=AIzaSyBfxkwsWMYydfa2FBkVO1i-Knux6e6HMLo');
+        return json_decode($res->getBody()->getContents())->status == "OK";
     }
 }
