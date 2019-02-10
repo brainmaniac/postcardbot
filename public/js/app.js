@@ -36424,6 +36424,32 @@ const app = new Vue({
 });
 */
 
+
+var timeInterval = 1000 * 10;
+
+function updateCurrentPosition() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      uploadGpsLocation(position.coords.latitude, position.coords.longitude);
+    });
+    setTimeout(updateCurrentPosition, timeInterval);
+  } else {
+    console.log("updateCurrentPosition failed");
+  }
+}
+
+function uploadGpsLocation(latitude, longitude) {
+  var url = "https://postcardbot.cyberandspace.se/addcoordinates/" + position.coords.latitude + "," + position.coords.longitude;
+  console.log("get url");
+  $.get(url, function (data) {
+    console.log("Upload sucessfull");
+  });
+}
+
+function startGps() {
+  setTimeout(updateCurrentPosition, timeInterval);
+}
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -36502,8 +36528,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/olofjondelius/code/postcardbot/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/olofjondelius/code/postcardbot/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/anders/Code/postcardbot/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/anders/Code/postcardbot/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

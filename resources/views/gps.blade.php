@@ -3,7 +3,9 @@
         <div>
 			<button id="gpsButton">Start GPS</button>
             <script>
-                startGps();
+                setTimeout(function() {
+                    startGps();
+                }, 5000);                
             </script>
         </div>
     @endsection
