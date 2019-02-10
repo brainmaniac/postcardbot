@@ -2,38 +2,75 @@
     @section('content')
         <div>
 			<button id="gpsButton">Start GPS</button>
+            <p id="demo"></p>
             <script>
-                // setTimeout(function() {
-                //     startGps();
-                // }, 5000);    
                 
-                var timeInterval = 1000;
+                // var timeInterval = 1000;
+                // var x = document.getElementById("demo");
+                // function showPosition(position) {
+                //     x.innerHTML = "Latitude: " + position.coords.latitude + 
+                //     "<br>Longitude: " + position.coords.longitude; 
+                //     }
 
-                function updateCurrentPosition() {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function (position) {
-                            uploadGpsLocation(position.coords.latitude, position.coords.longitude);
-                        });
-                        setTimeout(updateCurrentPosition, timeInterval);
-                    } else {
-                        console.log("updateCurrentPosition failed");
-                    }
+                // function updateCurrentPosition() {
+                //     if (navigator.geolocation) {
+                //         navigator.geolocation.getCurrentPosition(function (position) {
+                //             uploadGpsLocation(position.coords.latitude, position.coords.longitude);
+                //         });
+                //         setTimeout(updateCurrentPosition, timeInterval);
+                //     } else {
+                //         console.log("updateCurrentPosition failed");
+                //     }
+                // }
+
+                // function uploadGpsLocation(latitude, longitude) {
+                //     let url = "https://postcardbot.cyberandspace.se/addcoordinates/" + position.coords.latitude + "," + position.coords.longitude;
+                //     console.log("get url");
+                //     $.get( url, function( data ) {
+                //         console.log("Upload sucessfull");        
+                //     });
+                // }
+
+                // function startGps() {
+                //     setTimeout(updateCurrentPosition, timeInterval);
+                // }
+
+                // startGps();
+
+                var timeInterval = 30 * 1000;
+
+                function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else { 
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
                 }
 
-                function uploadGpsLocation(latitude, longitude) {
-                    let url = "https://postcardbot.cyberandspace.se/addcoordinates/" + position.coords.latitude + "," + position.coords.longitude;
-                    console.log("get url");
-                    $.get( url, function( data ) {
-                        console.log("Upload sucessfull");        
-                    });
+                function showPosition(position) {
+                    setTimeout(function(){
+                let url = "https://postcardbot.cyberandspace.se/addcoordinates/" + position.coords.latitude + "," + position.coords.longitude;
+                console.log("get url");
+
+                
+                        $.get( url, function( data ) {
+                            console.log("Upload sucessfull");        
+                        });
+                    }, 30000);
+                
+                    
+
                 }
 
                 function startGps() {
-                    setTimeout(updateCurrentPosition, timeInterval);
+                    var i;
+                    for (i = 0; i < 10; i++) { 
+                        getLocation();
+                    }
                 }
 
                 startGps();
-
+                
             </script>
         </div>
     @endsection
