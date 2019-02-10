@@ -48,25 +48,20 @@
                 }
 
                 function showPosition(position) {
-                    setTimeout(function(){
-                let url = "https://postcardbot.cyberandspace.se/addcoordinates/" + position.coords.latitude + "," + position.coords.longitude;
-                console.log("get url");
+                    let url = "https://postcardbot.cyberandspace.se/addcoordinates/" + position.coords.latitude + "," + position.coords.longitude;
+                    console.log("get url");
 
-                
                         $.get( url, function( data ) {
                             console.log("Upload sucessfull");        
                         });
-                    }, 30000);
                 
                     
 
                 }
 
                 function startGps() {
-                    var i;
-                    for (i = 0; i < 10; i++) { 
+                    var i; 
                         getLocation();
-                    }
                 }
 
                 startGps();
